@@ -1,0 +1,27 @@
+/*scroll bar settings !applies to all browsers besides firefox*/
+
+/*the backround width of the scroll bar itself*/
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+/*back ground color of the scrollbar*/
+body::-webkit-scrollbar-track {
+    background: #101215;
+}
+
+/*the scroll bar*/
+body::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 20px;
+    border: 3px solid #101215;
+}
+
+/*aditional scroll bar settings*/
+body {
+    scrollbar-width: thin;
+    scrollbar-color: gray;
+}
+
+
+/*i have written all these comments one by one*/

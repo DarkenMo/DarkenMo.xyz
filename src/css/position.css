@@ -1,0 +1,20 @@
+/*centers any element that has container*/
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  z-index: 0;
+  height: 550px;
+}
+
+/* links inside the gray box */
+.boxHP h2 {
+  display: inline-block;
+  width: 23%;
+  margin-top: 6.5%;
+}
+
+/*i have written all these comments one by one*/

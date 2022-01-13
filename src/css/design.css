@@ -1,0 +1,85 @@
+/* fonts */
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*makes the background color to the selected color and some text color and ect...*/
+body {
+    background-color: #0D1117;
+    color: white;
+    overflow-x: hidden !important;
+    overflow-y: auto;
+}
+
+/* gray box */
+.boxHP {
+    height: 110px;
+    width: 700px;
+    padding: 20px;
+    overflow: visible;
+    background-color: #14181e;
+    border-radius: 7px;
+    text-align: center;
+}
+
+/* links inside the gray box */
+.boxHP h2 {
+    position: relative;
+    float: none;
+    color: rgb(235, 26, 172);
+    text-decoration: none;
+}
+
+/* links inside the gray box */
+.boxHP h2:hover {
+    color: rgb(255, 255, 255);
+    transition: color 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+/* typewriter effect */
+.typewriter h1 {
+    position: relative;
+    top: 90px;
+    overflow: hidden;
+    /* checks if the content is not revealed until the animation */
+    border-right: .15em solid orange;
+    /* the typwriter cursor */
+    white-space: nowrap;
+    /* keeps the content on a single line */
+    margin: 0 auto;
+    /* gives that scrolling effect as the typing happens */
+    letter-spacing: .15em;
+    /* adjust as needed */
+    animation:
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: rgb(228, 0, 245);
+    }
+}
+
+
+/*i have written all these comments one by one*/
