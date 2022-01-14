@@ -17,4 +17,10 @@
   margin-top: 6.5%;
 }
 
+/* copyright text */
+.copyright {
+  position: fixed;
+  bottom: 0px;
+}
+
 /*i have written all these comments one by one*/

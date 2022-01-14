@@ -1,0 +1,24 @@
+/* compability with mobile */
+@media only screen and (max-width: 1155.05px) {
+    .typewriter h1 {
+        font-size: 20px;
+        top: 120px;
+    }
+
+    .boxHP {
+        height: 110px;
+        width: 80%;
+        padding: 20px;
+        overflow: visible;
+        background-color: #14181e;
+        border-radius: 7px;
+        text-align: center;
+    }
+
+    .boxHP h2 {
+        display: inline-block;
+        width: 44%;
+        margin-top: 3%;
+        font-size: 22px;
+    }
+}
