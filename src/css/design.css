@@ -24,7 +24,7 @@ body {
 }
 
 /* links inside the gray box */
-.boxHP h2 {
+.options {
     position: relative;
     float: none;
     color: rgb(235, 26, 172);
@@ -32,7 +32,7 @@ body {
 }
 
 /* links inside the gray box */
-.boxHP h2:hover {
+.options:hover {
     color: rgb(255, 255, 255);
     transition: color 0.3s;
     cursor: pointer;
