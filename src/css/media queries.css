@@ -2,8 +2,12 @@
 @media only screen and (max-width: 1155.05px) {
     .typewriter h1 {
         font-size: 20px;
-        top: 120px;
+        top: 60px;
     }
+
+    .container {
+        height: 450px;
+      }
 
     .boxHP {
         height: 110px;
