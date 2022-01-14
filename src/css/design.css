@@ -31,6 +31,14 @@ body {
     text-decoration: none;
 }
 
+/* pfp size */
+.pfp {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 2%;
+}
+
 /* links inside the gray box */
 .options:hover {
     color: rgb(255, 255, 255);
@@ -38,7 +46,6 @@ body {
     cursor: pointer;
     text-decoration: none;
 }
-
 
 /* typewriter effect */
 .typewriter h1 {

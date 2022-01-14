@@ -7,7 +7,7 @@
 
     .container {
         height: 450px;
-      }
+    }
 
     .boxHP {
         height: 110px;
@@ -25,4 +25,21 @@
         margin-top: 3%;
         font-size: 22px;
     }
+}
+
+/* destop compability */
+@media only screen and (min-width: 1155.05px) {
+    .containerAB {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        width: 50%;
+    }
+    .pfp {
+        position: relative;
+        top: 25px;
+        width: 170px;
+        height: 170px;
+        border-radius: 2%;
+    }
+    
 }

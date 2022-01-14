@@ -10,17 +10,31 @@
   height: 550px;
 }
 
+#spotifyimg {
+  position: fixed;
+  float: left;
+  bottom: 40px;
+  left: 40px;
+}
+
+
+/*container for about me*/
+.containerAB {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  margin-left: 15%;
+  margin-top: 100px;
+  z-index: 0;
+  height: 600px;
+}
+
 /* links inside the gray box */
 .boxHP h2 {
   display: inline-block;
   width: 23%;
   margin-top: 6.5%;
-}
-
-/* copyright text */
-.copyright {
-  position: fixed;
-  bottom: 0px;
 }
 
 /*i have written all these comments one by one*/
