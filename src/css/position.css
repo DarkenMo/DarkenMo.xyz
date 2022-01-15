@@ -17,6 +17,13 @@
   left: 40px;
 }
 
+#canvas1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
 
 /*container for about me*/
 .containerAB {
