@@ -27,7 +27,7 @@
     }
 }
 
-/* destop compability */
+/* destop compability on about me*/
 @media only screen and (min-width: 1155.05px) {
     .containerAB {
         display: grid;

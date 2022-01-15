@@ -10,6 +10,7 @@
   height: 550px;
 }
 
+/* settings for the spotify button the left corner */
 #spotifyimg {
   position: fixed;
   float: left;
@@ -17,6 +18,7 @@
   left: 40px;
 }
 
+/* related to the particle background in homepage */
 #canvas1 {
   position: absolute;
   left: 0;

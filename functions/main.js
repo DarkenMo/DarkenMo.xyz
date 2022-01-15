@@ -1,3 +1,12 @@
+// code from: MauritsWilke big credits to them
+// code from: MauritsWilke big credits to them
+// code from: MauritsWilke big credits to them
+// code from: MauritsWilke big credits to them
+// code from: MauritsWilke big credits to them
+// code from: MauritsWilke big credits to them
+
+// ==================================== \\
+
 // Hi there curious fella! 
 // I decided to comment the entire code just for you!
 
