@@ -5,14 +5,10 @@ RewriteBase /
 
 RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteCond %{REQUEST_URI} !/$
-RewriteRule (.*) $1\.html [L]
+RewriteRule (.*) $1\.php [L]
 
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+dirname/([^\s]+) [NC]
 RewriteRule ^ %1 [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
-<<<<<<< HEAD
 RewriteRule (?!^dirname/)^(.*)$ /dirname/$1 [L,NC]
-=======
-RewriteRule (?!^dirname/)^(.*)$ /dirname/$1 [L,NC]
->>>>>>> 301b006066a36b825caa78d712f3499cd5cb02c9
