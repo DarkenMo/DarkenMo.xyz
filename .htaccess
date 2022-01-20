@@ -1,17 +1,6 @@
 ErrorDocument 404 /404pagenotfound.html
 
-
-Options +FollowSymLinks -MultiViews
-# Turn mod_rewrite on
-RewriteEngine On
-RewriteBase /
-
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteCond %{REQUEST_URI} !/$
-RewriteRule (.*) $1\.html [L]
-
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+dirname/([^\s]+) [NC]
-RewriteRule ^ %1 [R=301,L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule (?!^dirname/)^(.*)$ /dirname/$1 [L,NC]
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [NC,L]
