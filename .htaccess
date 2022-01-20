@@ -12,3 +12,5 @@ RewriteRule ^ %1 [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule (?!^dirname/)^(.*)$ /dirname/$1 [L,NC]
+
+ErrorDocument 404 /404pagenotfound

@@ -25,6 +25,21 @@
         margin-top: 3%;
         font-size: 22px;
     }
+
+    .windowGif {
+        display: none;
+    }
+
+    .containerAB {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        margin-left: 15%;
+        margin-top: 200px;
+        z-index: 0;
+        height: 400px;
+    }
 }
 
 /* destop compability on about me*/
@@ -34,6 +49,7 @@
         grid-template-columns: 200px 1fr;
         width: 50%;
     }
+
     .pfp {
         position: relative;
         top: 25px;
@@ -41,5 +57,5 @@
         height: 170px;
         border-radius: 2%;
     }
-    
+
 }

@@ -34,6 +34,10 @@ div:nth-child(4) {
   animation: move 2s 450ms infinite cubic-bezier(.2, .64, .81, .23);
 }
 
+p {
+  text-align: center;
+}
+
 
 @keyframes move {
   0% {
