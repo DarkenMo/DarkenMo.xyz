@@ -10,6 +10,13 @@
   height: 550px;
 }
 
+/* donation button position */
+.donation {
+    position: fixed;
+    bottom:20px;
+    right:20px;
+}
+
 /* settings for the spotify button the left corner */
 #spotifyimg {
   position: fixed;
