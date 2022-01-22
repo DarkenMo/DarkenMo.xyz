@@ -12,9 +12,21 @@
 
 /* donation button position */
 .donation {
-    position: fixed;
-    bottom:20px;
-    right:20px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+/* src button */
+.sourceCode {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+}
+.sourceCode a {
+  position: relative;
+  bottom: 3px;
+  margin-right: 1px;
 }
 
 /* settings for the spotify button the left corner */
