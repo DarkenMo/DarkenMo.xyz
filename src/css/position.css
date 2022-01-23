@@ -10,6 +10,19 @@
   height: 550px;
 }
 
+.containerPet {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  z-index: 0;
+  height: 500px;
+}
+
+
 /* donation button position */
 .donation {
   position: fixed;
