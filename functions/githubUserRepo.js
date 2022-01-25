@@ -30,7 +30,7 @@ function requestUserRepos(username) {
                 <p><strong>repo:</strong> ${data[i].name}</p>
                 <p><strong>description:</strong> ${data[i].description}</p>
                 <p><strong>URL:</strong> <a class="options" target="_blank" href="${data[i].html_url}">View</a></p>
-                <hr>
+                <hr style="border: solid 1px gray; margin-right: 6%;">
             `);
 
             // append each li to the ul
