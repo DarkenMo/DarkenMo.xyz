@@ -39,6 +39,12 @@ body {
     border-radius: 2%;
 }
 
+.repoStyle {
+    width: 500px;
+    list-style-type: none;
+    background-color: #14181e;
+}
+
 /* links inside the gray box */
 .options:hover {
     color: rgb(255, 255, 255);
