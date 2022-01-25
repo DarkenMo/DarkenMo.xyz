@@ -10,6 +10,8 @@
   height: 550px;
 }
 
+
+/* container for pet page */
 .containerPet {
   display: flex;
   flex-direction: column;
@@ -22,6 +24,30 @@
   height: 500px;
 }
 
+
+/*container for about me*/
+.containerAB {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  margin-left: 15%;
+  margin-top: 100px;
+  z-index: 0;
+  height: 350px;
+}
+
+/* container for projects page */
+.containerPJ {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  z-index: 0;
+  height: 500px;
+}
 
 /* donation button position */
 .donation {
@@ -36,6 +62,7 @@
   bottom: 20px;
   left: 20px;
 }
+
 .sourceCode a {
   position: relative;
   bottom: 3px;
@@ -59,17 +86,7 @@
 }
 
 
-/*container for about me*/
-.containerAB {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  margin-left: 15%;
-  margin-top: 100px;
-  z-index: 0;
-  height: 350px;
-}
+
 
 /* links inside the gray box */
 .boxHP h2 {
