@@ -1,198 +1,130 @@
 // code from: MauritsWilke big credits to them
-// code from: MauritsWilke big credits to them
-// code from: MauritsWilke big credits to them
-// code from: MauritsWilke big credits to them
-// code from: MauritsWilke big credits to them
-// code from: MauritsWilke big credits to them
 
-// ==================================== \\
-
-// Hi there curious fella! 
-// I decided to comment the entire code just for you!
-
-// This gets the cavnas from index.html 
+const random = (min, max) => Math.random() * (max - min) + min;
+const urlParams = new URLSearchParams(window.location.search);
+const settings = {
+	mouseDivider: 100,
+	connnectionRadius: 120,
+	particleDivider: 9000,
+	minParticleSize: 2,
+	maxParticleSize: 3,
+	particleSpeed: 0.8,
+	maxParticles: 500,
+	noCard: urlParams.has('noCard'),
+	noMouse: urlParams.has('noMouse'),
+	noClick: urlParams.has('noClick'),
+	colour: urlParams.get('colour') === "random" ? `rgb(${Math.floor(random(0, 255))}, ${Math.floor(random(0, 255))}, ${Math.floor(random(0, 255))})` : urlParams.get('colour')
+}
 const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext('2d');
+canvas.width = document.documentElement.clientWidth || document.body.clientWidth;;
+canvas.height = document.documentElement.clientHeight || document.body.clientHeight;;
+window.addEventListener('resize', () => {
+	[canvas.width, canvas.height] = [innerWidth, innerHeight];
+	mouse.radius = (canvas.height / settings.mouseDivider) * (canvas.width / settings.mouseDivider);
+	update();
+});
 
-// This sets the canvas to the current window size
-canvas.width = document.documentElement.clientWidth;
-canvas.height = document.documentElement.clientHeight;
-
-// Variables
-let particlesArray;
-let mouseDivider = 100; // Increase this to shrink the mouse radius
-let connectDivider = 7; // Increase this to shrink the minimum distance or a line
-let particleDivider = 9000; // Decrease this to get more particles, change at your own risk of lagging your device :)
-let minimumParticleSize = 1;
-let particleSpeed = 2;
+let particles = new Set();
 let mouse = {
 	x: null,
 	y: null,
-	radius: (canvas.height / mouseDivider) * (canvas.width / mouseDivider)
+	radius: (canvas.height / settings.mouseDivider) * (canvas.width / settings.mouseDivider),
+	lastMoved: 0
 }
 
-// This locates the curser and sets the cursor position to 'mouse'
-window.addEventListener('mousemove',
-	function (event) {
-		mouse.x = event.x;
-		mouse.y = event.y;
-	}
-);
+if (!settings.noMouse) window.addEventListener('mousemove', (event) => { if (!event.shiftKey) [mouse.x, mouse.y, mouse.lastMoved] = [event.pageX, event.pageY, Date.now()] });
+if (!settings.noMouse) window.addEventListener('mouseout', () => [mouse.x, mouse.y] = [null, null]);
+if (!settings.noClick) {
+	['dblclick', 'touchstart'].forEach(e => window.addEventListener(e, (event) => {
+		let [posX, posY] = [0, 0]
+		if (event.type === "touchstart") {
+			const evt = (typeof event.originalEvent === 'undefined') ? event : event.originalEvent;
+			const touch = evt.touches[0] || evt.changedTouches[0];
+			[posX, posY] = [touch.pageX, touch.pageY]
+		} else { [posX, posY] = [event.pageX, event.pageY] }
+		particles.forEach(particle => {
+			if (Math.hypot(particle.pos[0] - posX, particle.pos[1] - posY) < mouse.radius * 3) {
+				particle.vel = [Math.atan2(particle.pos[1] - posY, particle.pos[0] - posX), 4.5]
+			}
+		})
+	}));
+}
 
-// To prevent a 'ghost cursor', itll set the position of the cursor to undefined when there is no cursor on the screen
-window.addEventListener('mouseout',
-	function () {
-		mouse.x = undefined;
-		mouse.x = undefined;
-	}
-);
-
-
-// Big boi class to create particles
 class Particle {
-	constructor(x, y, directionX, directionY, size, colour) {
-		this.x = x;
-		this.y = y;
-		this.directionX = directionX;
-		this.directionY = directionY;
-		this.size = size;
-		this.colour = colour;
+	constructor(pos, vel, size, colour) {
+		this.pos = pos || [random(0, canvas.width), random(0, canvas.height)];
+		this.vel = vel || [random(0, Math.PI * 2), settings.particleSpeed];
+		this.size = size || random(settings.minParticleSize, settings.maxParticleSize);
+		this.colour = colour || settings.colour || "rgb(255,255,255)";
+		this.velStrive = this.vel[1];
 	}
 
-	// This draws the particle, arc is basically a circle (who decided radians would be the thing to go with)
 	draw() {
 		ctx.beginPath();
-		ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+		ctx.arc(this.pos[0], this.pos[1], this.size, 0, Math.PI * 2);
 		ctx.fillStyle = this.colour;
 		ctx.fill();
 	}
 
-	// This updates the particles every frame
 	update() {
-		// These if statements check if the particle is at the edge of the page and if thats the case, it has to go back (there is no escape >:)
-		if (this.x > canvas.width || this.x < 0) {
-			this.directionX = -this.directionX;
-		}
-		if (this.y > canvas.height || this.y < 0) {
-			this.directionY = -this.directionY;
-		}
-
-		// Now here's a lot of maths, but ill try and explain it
-		// This first bit here is the difference between the mouse and the particle
-		let dx = mouse.x - this.x;
-		let dy = mouse.y - this.y;
-
-		// With some trigonometry we can calculate the distance of the cursor to the particle
-		let distance = Math.sqrt(dx * dx + dy * dy);
-
-		// This just changes the movement if the mouse is near the particle. there are 4 if's to check which corner of the particle the mouse is in
-		if (distance < mouse.radius + this.size) {
-			if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
-				this.x += 10;
-			}
-			if (mouse.x > this.x && this.x > this.size * 10) {
-				this.x -= 10;
-			}
-			if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
-				this.y += 10;
-			}
-			if (mouse.y > this.y && this.y > this.size * 10) {
-				this.y -= 10;
-			}
+		if (this.vel[1] > this.velStrive) this.vel[1] -= 0.04
+		if (this.vel[1] < this.velStrive) this.vel[1] = this.velStrive;
+		const displacement = 10;
+		const distance = Math.hypot(mouse.x - this.pos[0], mouse.y - this.pos[1]);
+		if (!settings.noMouse && mouse.x && Date.now() - mouse.lastMoved < 300 && distance < mouse.radius + this.size) {
+			if (mouse.x < this.pos[0] && this.pos[0] < canvas.width - this.size * 10) this.pos[0] += displacement;
+			if (mouse.x > this.pos[0] && this.pos[0] > this.size * 10) this.pos[0] -= displacement;
+			if (mouse.y < this.pos[1] && this.pos[1] < canvas.height - this.size * 10) this.pos[1] += displacement;
+			if (mouse.y > this.pos[1] && this.pos[1] > this.size * 10) this.pos[1] -= displacement;
 		}
 
-		// This changes the position of the particle based on the direction value.
-		this.x += this.directionX;
-		this.y += this.directionY;
+		if (this.pos[0] + this.size > canvas.width || this.pos[0] - this.size < 0) this.vel[0] = Math.PI - this.vel[0] + random(-0.3, 0.3);
+		if (this.pos[1] + this.size > canvas.height || this.pos[1] - this.size < 0) this.vel[0] = this.vel[0] * -1 + random(-0.3, 0.3);
+		this.pos = [this.pos[0] + Math.cos(this.vel[0]) * this.vel[1], this.pos[1] + Math.sin(this.vel[0]) * this.vel[1]];
 		this.draw();
+		this.connect();
+	}
+
+	connect() {
+		particles.forEach(particle => {
+			const distance = Math.hypot(particle.pos[1] - this.pos[1], particle.pos[0] - this.pos[0])
+			if (distance < settings.connnectionRadius) {
+				ctx.strokeStyle = this.colour.replace(")", `, ${1 - distance / settings.connnectionRadius})`);
+				ctx.beginPath();
+				ctx.moveTo(this.pos[0], this.pos[1]);
+				ctx.lineTo(particle.pos[0], particle.pos[1]);
+				ctx.stroke();
+			}
+		})
 	}
 }
 
 function init() {
-	// The particles are all stored in this array.
-	particlesArray = [];
-
-	// Ohboi more maths?
-	// The number of particles changes with the size of the canvas.
-	let numberOfParticles = (canvas.height * canvas.width) / particleDivider;
-
-	// This creates the particles 
-	for (let i = 0; i < numberOfParticles; i++) {
-		// This gives the particles a random size (with a minimum size of minimumParticleSize)
-		let size = (Math.random() * 2) + minimumParticleSize;
-		// Random position of the particle
-		let x = (Math.random() * ((document.documentElement.clientWidth - size * 2) - (size * 2)) + size * 2);
-		let y = (Math.random() * ((document.documentElement.clientHeight - size * 2) - (size * 2)) + size * 2);
-		// This is the movement of the particle, we have '-2.5' at the end so the movement can also be negative :)
-		let directionX = (Math.random() * particleSpeed) - (particleSpeed / 2);
-		let directionY = (Math.random() * particleSpeed) - (particleSpeed / 2);
-		// The colour of the particle, yes it can be random
-		let colour = '#FFFFFF';
-
-		// Creates a new particle with the values declared above
-		particlesArray.push(new Particle(x, y, directionX, directionY, size, colour));
-	}
+	particles = new Set();
+	let numberOfParticles = Math.round((canvas.height * canvas.width) / settings.particleDivider);
+	while (particles.size < numberOfParticles && particles.size <= settings.maxParticles) particles.add(new Particle())
 }
 
-function connect() {
-	// Default value for the opacity of the lines, we are using opacity to prevent lines from flashing in and out of existence
-	let opacityValue = 1;
-
-	// Nested for loop that will loop trough all particles
-	for (let i = 0; i < particlesArray.length; i++) {
-		// For each particle itll check the position of all other particles and decide if they need a connection
-		for (let j = 0; j < particlesArray.length; j++) {
-			// More trigonomitry
-			let distance = ((particlesArray[i].x - particlesArray[j].x) * (particlesArray[i].x - particlesArray[j].x))
-				+ ((particlesArray[i].y - particlesArray[j].y) * (particlesArray[i].y - particlesArray[j].y));
-
-			// We are using the size of the canvas to determine the length of the lines (to prevent weird line sizes on different screens)
-			if (distance < (canvas.width / connectDivider) * (canvas.height / connectDivider)) {
-				// Change the opacity based on the distance
-				opacityValue = 1 - (distance / 20000);
-				// Draws a line between the two dots
-				ctx.strokeStyle = `rgb(255,255,255, ${opacityValue})`;
-				ctx.lineWidth = 0.5;
-				ctx.beginPath();
-				ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
-				ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
-				ctx.stroke();
-			}
-		}
-	}
-}
-
-// Animates the entire canvas
 function animate() {
 	requestAnimationFrame(animate);
-	// Clears the canvas each frame
 	ctx.clearRect(0, 0, document.documentElement.clientWidth, document.documentElement.clientHeight);
-
-	// Updates all particles
-	for (let i = 0; i < particlesArray.length; i++) {
-		particlesArray[i].update();
-	}
-	// Connects particles
-	connect();
+	particles.forEach(particle => particle.update());
 }
 
-// When the user resizes the window, the canvas will automatically resize with it
-window.addEventListener('resize',
-	function () {
-		canvas.width = innerWidth;
-		canvas.height = innerHeight;
-		mouse.radius = (canvas.height / mouseDivider) * (canvas.width / mouseDivider);
-		// Calling init() again to regenerate all particles
-		init();
-	}
-);
+function update() {
+	const newAmount = Math.round((canvas.height * canvas.width) / settings.particleDivider);
+	if (particles.size > newAmount) particles = new Set([...Array.from(particles)].slice(0, newAmount))
+	if (particles.size < newAmount) while (particles.size < newAmount && particles.size <= settings.maxParticles) particles.add(new Particle())
 
-// Starts it all and animates it
+	particles.forEach(particle => {
+		if (particle.pos[0] + particle.size > canvas.width || particle.pos[0] - particle.size < 0 || particle.pos[1] + particle.size > canvas.height || particle.pos[1] - particle.size < 0) particle.pos = [random(0, canvas.width), random(0, canvas.height)]
+	});
+}
+
 init();
 animate();
-
-// If you have any questions about why I did something or if you have suggestions, feel free to contract me!
-
-
-// This should fix ios viewheight because ew
 document.body.height = window.innerHeight;
+document.body.width = window.innerWidth;
+
+window.onload = () => { if (settings.noCard) document.getElementById('container').remove() };

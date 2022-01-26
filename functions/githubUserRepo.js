@@ -37,7 +37,6 @@ function requestUserRepos(username) {
             ul.appendChild(li);
 
         }
-
     }
     // send the request to the server
     xhr.send();
