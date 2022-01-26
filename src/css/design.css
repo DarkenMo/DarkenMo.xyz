@@ -47,13 +47,13 @@ body {
     text-decoration: none;
 }
 
+/* website source code text in homepage */
 .sourceCode a {
     position: relative;
     float: none;
     color: rgb(175, 175, 175);
     text-decoration: none;
 }
-
 
 .sourceCode a:hover {
     color: rgb(255, 255, 255);
@@ -62,6 +62,21 @@ body {
     text-decoration: none;
 }
 
+/* github repo element in projects */
+.repoList {
+    width: 500px;
+    list-style-type: none;
+    background-color: #14181e;
+}
+
+@media only screen and (max-width: 480px) {
+    .repoList {
+        width: 300px;
+        list-style-type: none;
+        background-color: #14181e;
+    }
+
+}
 
 /* typewriter effect */
 .typewriter h1 {

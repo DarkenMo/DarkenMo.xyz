@@ -39,6 +39,7 @@
 
 /* container for projects page */
 .containerPJ {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -46,6 +47,7 @@
   align-items: center;
   align-content: center;
   z-index: 0;
+  top: 150px;
 }
 
 /* donation button position */
