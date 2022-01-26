@@ -40,6 +40,18 @@
         z-index: 0;
         height: 400px;
     }
+
+    .containerPJ {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        z-index: 0;
+        top: 100px;
+    }
 }
 
 /* destop compability on about me*/
