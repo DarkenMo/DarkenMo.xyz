@@ -26,13 +26,13 @@
 
 <body style="background-color: #040F21;">
     <!-- home button i added the styling here since it didnt work in my css file -->
-    <a data-aos="fade-in" data-aos-delay="100" class="homeButton" href="homepage"><img class="homeButtonimg"
+    <a data-aos="fade-in" data-aos-delay="100" class="homeButton disable-select" href="homepage"><img class="homeButtonimg"
             style="width: 50px; height: 50px;position: absolute;left: 40px;top: 40px;background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: none;text-decoration: none;border-radius: 50%;"
             src="../../content/avatars/pfp.png" alt="home button"></a>
     <!-- div that has grid on it and contains everything -->
     <div class="containerAB" data-aos="fade-in" data-aos-delay="100">
         <!-- my profile and its settings -->
-        <img class="pfp" src="../../content/avatars/pfp.png">
+        <img class="pfp disable-select" src="../../content/avatars/pfp.png">
         <!-- text on the page -->
         <h1 class="textAB">Hi, i'm <a class="options" href="discord:///users/528933677900627998">Mo</a>! <br>
             <p style="font-size: 15px; font-weight: 300;">I'm a hobby developer and i code random stuff that<br>come to
@@ -40,24 +40,30 @@
                 watching anime and playing games.</p>
         </h1>
         <!-- this is the image that has a window with rain on it -->
-        <img src="../../content/backgrounds/7LRq.gif" class="windowGif" style="position: absolute; left: 720px;"
+        <img class="disable-select" src="../../content/backgrounds/7LRq.gif" class="windowGif" style="position: absolute; left: 720px;"
             alt="bg">
         <!-- div that has socials inside have only added twitter will add more -->
         <div>
             <h1>Socials</h1>
-            <a href="https://twitter.com/DarkenMo" target="_blank" style="border:0; text-decoration:none; outline:none">
+            <a class="disable-select" href="https://twitter.com/DarkenMo" target="_blank" style="border:0; text-decoration:none; outline:none">
                 <img id="twitterimg" src="../../content/icons/twitter.png" alt="twitter icon" border=0
                     style="border:0; text-decoration:none; outline:none" class="twitter" height="30" width="30">
             </a>
-            <a href="https://github.com/DarkenMo" target="_blank"
+            <a class="disable-select" href="https://github.com/DarkenMo" target="_blank"
                 style="border:0; position: relative; bottom: 1px; left: 3px; text-decoration:none; outline:none">
                 <img id="twitterimg" src="../../content/icons/github-light.png" alt="github icon" border=0
                     class="twitter" height="30" width="30">
             </a>
+            <a class="disable-select" href="discord" target="_blank"
+                style="border:0; position: relative; bottom: 3px; left: 6px; text-decoration:none; outline:none">
+                <img id="twitterimg" src="../../content/icons/discord.png" alt="github icon" border=0
+                    class="twitter" height="25" width="35">
+            </a>
+
         </div>
     </div>
     <!-- the spotify button on the left side of the screen -->
-    <a href="spotify://user/v789qeraksjle3v5yk4yn3gbm">
+    <a class="disable-select" href="spotify://user/v789qeraksjle3v5yk4yn3gbm">
         <img id="spotifyimg" src="../../content/icons/spotify.png" alt="spotify icon" border=0 class="spotify"
             height="30" width="30">
     </a>

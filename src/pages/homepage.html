@@ -24,7 +24,7 @@
 <body>
     <!-- particles -->
     <canvas id="canvas1"></canvas>
-    <script src="../../functions/main.js"></script>
+    <script src="../../functions/particles.js"></script>
     <!-- this div centers all elements inside it -->
     <div class="container">
         <!-- this is the typing element -->
@@ -32,16 +32,16 @@
             <h1>welcome to my webpage!</h1>
         </div>
         <!-- gray box -->
-        <div class="boxHP" data-aos="fade-in" data-aos-delay="100">
+        <div class="boxHP disable-select" data-aos="fade-in" data-aos-delay="100">
             <!-- links inside gray box -->
             <h2><a href="about-me" class="options">about me</a></h2>
             <h2><a href="projects" class="options">projects</a></h2>
-            <h2><a href="discord" class="options">discord</a></h2>
+            <h2><a href="holy-wall" class="options">holy wall</a></h2>
             <h2><a href="pet" class="options">my pet</a></h2>
         </div>
     </div>
     <!-- source code button -->
-    <div class="sourceCode">
+    <div class="sourceCode disable-select">
         <a href="https://github.com/DarkenMo/darkenmo.xyz" target="_blank">View website's code</a>
         <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="18" width="18"
             xmlns="http://www.w3.org/2000/svg">
@@ -56,7 +56,7 @@
 
 
     <!-- donation button -->
-    <div class="donation">
+    <div class="donation disable-select">
         <form action="https://www.paypal.com/donate" method="post" target="_top">
             <input type="hidden" name="hosted_button_id" value="MY3SF8A3MZ7TA" />
             <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0"
