@@ -25,12 +25,16 @@
 .containerPet {
   margin-top: 10%;
   margin-left: 10%;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
   height: 1000px;
 }
 
+/* users box in holy-wall */
+.users {
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+  z-index: 0;
+}
 
 /*container for about me*/
 .containerAB {
@@ -57,7 +61,7 @@
   top: 150px;
 }
 
-
+/* media queries for project and pet page */
 @media only screen and (max-width: 480px) {
 
   .containerPJ {
@@ -70,6 +74,18 @@
     align-content: center;
     z-index: 0;
     top: 100px;
+  }
+
+  .containerPet {
+    position: relative;
+    top: 80px;
+  }
+
+  .containerH {
+    display: block;
+    position: relative;
+    top: 100px;
+    margin: 3%;
   }
 }
 
