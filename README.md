@@ -1,8 +1,8 @@
-# darkenmo's website
+# Hello there
 
-- It is open source so feel free to use it however you like!
+- This is my friend project that i have made public
+- would love to see suggestions and and helpful hints
+- project is open source and you can use it freely!
 
-- First actual project please judge my work
-
-- I have commented everything in my code so you can know what is going on
-
+## made with:
+- html, css and a bit of js
