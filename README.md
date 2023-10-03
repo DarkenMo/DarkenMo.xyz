@@ -1,8 +1,8 @@
-# Hello there
+# Itroduction:
 
-- This is my friend project that i have made public
-- would love to see suggestions and and helpful hints
-- project is open source and you can use it freely!
+- This is my first project that I've made public.
+- Would love to hear suggestions and and helpful hints.
+- Project is open source and you can use it freely!
 
 ## made with:
 - html, css and a bit of js
