@@ -44,4 +44,4 @@ function requestUserRepos(username) {
 }
 
 // calling the actual function
-requestUserRepos('DarkenMo');
+requestUserRepos('wynnucodesthings');
